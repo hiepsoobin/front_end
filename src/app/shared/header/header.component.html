@@ -1,0 +1,98 @@
+<header>
+  <div id="header ">
+    <div class="container">
+      <div class="row ">
+
+        <div class="col-lg-4 mt-4 ms-5 ">
+          <p>
+            7 ngày <b>đổi trả</b> dễ dàng
+          </p>
+        </div>
+        <div class="col-lg-4 mt-4  logo ms-4 ">
+
+          <img class="img-fluid " src="assets/img/logo/logo.jpg" alt="">
+
+        </div>
+        <div class="col-lg-4 mt-4  ms-3">
+          <div class="header-content">
+            <p>
+              <span>1900 8762271 </span><br>
+              <span>Hỗ trợ mua hàng</span>
+
+            </p>
+            <div class=" item-search"><img class="svg" src="assets/img/logo/magnifying-glass-solid.svg" alt="">
+            </div>
+            <div class=" item-user"><img class="svg" src="assets/img/logo/user-solid.svg" alt=""></div>
+            <div class=" item-cart">
+
+              <img class="svg " src="assets/img/logo/cart-shopping-solid.svg" alt="">
+
+              <div class=" item-carts">
+                <div class="show-card">
+                  <div class="main-card" *ngFor="let item of items">
+                    <div class="img-product">
+                      <img [src]="'http://127.0.0.1:8000/storage/image/product/'+item.product.image[0]?.img_product"
+                        alt="">
+                    </div>
+                    <div class="name-product">
+                      <p> {{item.product.product.name}} </p>
+                    </div>
+                    <div class="item-close"><i class="fa-solid fa-trash" (click)="removeFromCart(items)"></i> </div>
+                    <span class="price-product"> {{(item.product.product.price|currency:'VND').slice(1) + 'đ' }}</span>
+
+                    <div class="quantity-select">
+                      <input type="button" value="-" class="btn-reduce" (click)="decreaseQuantity(item)">
+                      <input type="button" value="{{item.quantity}}" class="btn-quantity">
+                      <input type="button" value="+" class="btn-increase" (click)="increaseQuantity(item)">
+                    </div>
+                  </div>
+
+                </div>
+
+                <hr>
+
+                <p>Tổng Cổng: <span class="tottal-money">{{(total|currency:'VND').slice(1) + 'đ' }}</span></p>
+
+                <div class="pay_cart">
+
+                  <a href="/checkout" class="btn-pay">Thanh Toán</a>
+                  <a href="/cart" class="btn-cart">Giỏ Hàng</a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+    <div id="menu">
+      <div class="container">
+        <div class="row">
+          <ul id="main-menu">
+            <li><a href="">TRANG CHỦ</a></li>
+            <li><a href="/home">SẢN PHẨM <i class="fa-solid fa-angle-down"></i></a>
+              <ul class="sub-menu">
+                <li *ngFor="let item of category"><a href="/category/{{item.id}}">{{item.name}}</a></li>
+
+              </ul>
+
+
+            </li>
+            <li><a href="">THÔNG TIN <i class="fa-solid fa-angle-down"></i></a>
+              <ul class="sub-menu">
+                <li><a href="">Liên hệ</a></li>
+                <li><a href="">Hệ thống cửa hàng</a></li>
+                <li><a href="">Liên hệ</a></li>
+                <li><a href="">Tin tức</a></li>
+
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

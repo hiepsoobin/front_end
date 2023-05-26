@@ -1,0 +1,129 @@
+<div id="main">
+    <div class="container">
+        <div class="row">
+            <div class=" col-lg-12">
+                <a href="">Trang chủ</a>
+                <hr>
+            </div>
+            <div class=" col-lg-12">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="main-left">
+                                <div class="img-main">
+                                    <div class="img-mains">
+
+                                        <img [src]="'http://127.0.0.1:8000/storage/image/product/'+img[0]?.img_product"
+                                            alt="" style="width: 300px;">
+                                        <img [src]="'http://127.0.0.1:8000/storage/image/product/'+img[1]?.img_product"
+                                            alt="" style="width: 300px;">
+                                        <img [src]="'http://127.0.0.1:8000/storage/image/product/'+img[2]?.img_product"
+                                            alt="" style="width: 300px;">
+                                        <img [src]="'http://127.0.0.1:8000/storage/image/product/'+img[3]?.img_product"
+                                            alt="" style="width: 300px;">
+                                        <img [src]="'http://127.0.0.1:8000/storage/image/product/'+img[4]?.img_product"
+                                            alt="" style="width: 300px;">
+                                        <img [src]="'http://127.0.0.1:8000/storage/image/product/'+img[5]?.img_product"
+                                            alt="" style="width: 300px;">
+
+                                    </div>
+                                    <div class="img-extra">
+
+                                        <img *ngFor="let item of img.slice(0,6)"
+                                            src="http://127.0.0.1:8000/storage/image/product/{{item.img_product}}"
+                                            alt="" style="width: 300px;">
+
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="main-right">
+                                <h4>{{detail_name}}</h4>
+                                <span>SKU: N127-S-B</span>|<span>Thương hiệu: YG SHOP</span>
+                                <hr>
+                                <h2>{{(detail_price|currency:'VND').slice(1) + 'đ'}}</h2>
+                                <span>Tình trạng:</span><b>Còn hàng</b><br><br>
+
+                                <span>Kích Thước:</span> <span>Bảng Size</span><br>
+                                <div class="size">
+                                    <div class="size-contents" *ngFor="let item of size">
+
+                                        <input type="radio" name="size" [value]="" [id]="item.namesize"
+                                            (change)="getSelectedSize(item)">
+                                        <label for="{{item.namesize}}"> {{item.namesize}}</label>
+                                    </div>
+                                </div><br>
+                                <span>Màu sắc:</span> <br>
+                                <div class="color">
+                                    <div class="size-contents" *ngFor="let c of color">
+                                        <input type="radio" name="color" [value]="" [id]="c.namecolor"
+                                            (change)="getSelectedColor(c)">
+                                        <label for="{{c.namecolor}}">{{c.namecolor}}</label>
+                                    </div>
+                                </div>
+
+                                <div class="quantity-selects m-0 pt-4">
+                                    <span>Số Lượng :</span>
+                                    <input type="button" value="-" class="btn-reduce">
+                                    <input type="button" value="1" class="btn-quantity">
+                                    <input type="button" value="+" class="btn-increase">
+                                </div>
+                                <button class="btn-oder" (click)="addToCart()">Đặt hàng</button>
+
+
+                                <span class="mt-2">Hotline đặt hàng: 1900 252520 (09:00-22:00)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <h5 class="text-center  mt-4">MÔ TẢ</h5>
+
+                    <hr class="mt-2">
+                    <p [innerHTML]="detail_description"></p>
+                    <div class="img-describe" *ngFor="let item of img">
+                        <img src="http://127.0.0.1:8000/storage/image/product/{{item.img_product}}" alt="">
+
+
+
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-product row ms-0 p-0">
+                <h2 class="text-center  mt-4">SẢN PHẨM LIÊN QUAN</h2>
+                <div class="product" *ngFor="let item of product_similar.slice(0,5)">
+                    <div class=" product-img">
+                        <div class="product-imgs">
+                            <img [src]="'http://127.0.0.1:8000/storage/image/product/'+item.image[0]?.img_product"
+                                alt="">
+                            <button><a href=""><i class="fa-solid fa-link"></i></a></button>
+                        </div>
+                    </div>
+                    <label class="name-product"><a href="/detail/{{item.id}}">{{item.name}}</a></label>
+
+                    <label class="product-price">{{(item.price|currency:'VND').slice(1) + 'đ' }}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

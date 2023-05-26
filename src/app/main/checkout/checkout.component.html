@@ -1,0 +1,110 @@
+<div id="main">
+    <div class="container">
+        <div class="row">
+            <hr>
+            <form action="" method="POST" [formGroup]="checkout_from" (ngSubmit)="onSubmit()">
+                <div class="main-checkouts">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="information-customer">
+                                    <h6>Thông tin mua hàng</h6>
+                                    <hr>
+                                    <input type="email" formControlName="email" id="" placeholder="Email" class="">
+                                    <input type="text" formControlName="name" id="" placeholder="Họ và Tên" class="">
+                                    <input type="text" formControlName="phone" id="" placeholder="Số Điện Thoại"
+                                        class="">
+                                    <input type="text" formControlName="adress" id="" placeholder="Địa chỉ" class="">
+
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="checkout-transport">
+                                    <h6>Vận chuyển</h6>
+                                    <hr>
+                                    <div class="price-tranport">
+                                        <div>
+                                            <label for="">YG Fast đồng giá</label>
+
+                                        </div>
+                                        <div> <span>30.000 đ</span> </div>
+                                    </div>
+                                    <div class="pay">
+                                        <h6>Thanh toán</h6>
+                                        <div>
+                                            <label for=""> Thanh toán khi giao hàng (COD)</label>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="main-checkout">
+                                    <h6>Đơn hàng ( {{ totalQuantity }} sản phẩm)</h6>
+                                    <hr>
+                                    <div *ngFor="let item of items" class="checkout-product">
+                                        <div class="check-image">
+                                            <img [src]="'http://127.0.0.1:8000/storage/image/product/'+item.product.product.image[0]?.img_product"
+                                                alt="">
+                                            <label class="label-quantity">{{item.quantity}}</label>
+                                        </div>
+                                        <div class="check-name">
+                                            <span>VALUE IS TIME T-SHIRT</span><br>
+                                            <span class="ckeck-size">S</span> / <span class="ckeck-color">CREAM</span>
+                                        </div>
+                                        <div class="check-price">
+                                            <p>{{item.product.product.price}}</p>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="checkout-product">
+                                        <div class="check-image">
+                                            <img src="./img/product/ao1.jpg" alt="">
+                                            <label class="label-quantity">0</label>
+                                        </div>
+                                        <div class="check-name">
+                                            <span>VALUE IS TIME T-SHIRT</span><br>
+                                            <span class="ckeck-size">S</span> / <span class="ckeck-color">CREAM</span>
+                                        </div>
+                                        <div class="check-price">
+                                            <p>350.000₫</p>
+                                        </div>
+                                    </div>
+                                    <div class="checkout-product">
+                                        <div class="check-image">
+                                            <img src="./img/product/ao1.jpg" alt="">
+                                            <label class="label-quantity">0</label>
+                                        </div>
+                                        <div class="check-name">
+                                            <span>VALUE IS TIME T-SHIRT</span><br>
+                                            <span class="ckeck-size">S</span> / <span class="ckeck-color">CREAM</span>
+                                        </div>
+                                        <div class="check-price">
+                                            <p>350.000₫</p>
+                                        </div>
+
+                                    </div> -->
+                                    <hr>
+                                    <div class="">
+                                        <span class="sp-provisional">Tạm Tính:</span>
+                                        <span class="sp-price ">{{total_money}}</span><br>
+
+                                        <span class="sp-transport "> Phí Vận Chuyển:</span>
+                                        <span class="sp-transport-price">30.000₫</span><br>
+                                        <hr>
+                                        <span class="sp-toltal">Tổng tiền:</span>
+                                        <span class="sp-toltal-money">{{total_payment}}</span>
+                                    </div>
+                                    <div>
+                                        <button class="btn-checkout-return">Quay Lại Mua Hàng</button>
+                                        <button type="submit" class="btn-checkout">Đặt Hàng</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+<div id="main">
+    <div class="container">
+        <div class="row">
+            <div class=" col-lg-12">
+                <a href="">Trang chủ</a>
+                <hr>
+            </div>
+            <div class="pt-3">
+                <p> <span>(3 sản phẩm)</span></p>
+
+            </div>
+
+
+            <div class="main-cart">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <div class="cart_item" *ngFor="let item of items">
+                                <img [src]="'http://127.0.0.1:8000/storage/image/product/'+item.product.image[0]?.img_product"
+                                    alt="">
+                                <div class="cart_mains">
+                                    <h6 class="name_products">
+                                        {{item.product.product.name}} -
+                                        <span>{{item.size.namesize}}</span> /
+                                        <span>{{item.color.namecolor}}</span>
+                                    </h6>
+                                    <p>Thương hiệu: YG SHOP</p>
+                                    <p><a (click)="removeFromCart(items)">Xóa</a></p>
+                                </div>
+                                <div class="cart_price">
+                                    <h6>{{item.product.product.price}} đ</h6>
+                                </div>
+                                <div class="quantity-selects">
+                                    <input type="button" value="-" class="btn-reduce" (click)="decreaseQuantity(item)">
+                                    <input type="button" value="{{item.quantity}}" class="btn-quantity">
+                                    <input type="button" value="+" class="btn-increase"
+                                        (click)="increaseQuantity(item)">
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="main-rights">
+                                <div class="content_rights">
+                                    <p class="">Tạm tính: <span>{{ total }} đ</span></p>
+                                    <hr>
+                                    <p class="">Thành Tiền:
+                                        <span style="font-weight: 700;font-size: 23px; top: 50.8%; ">{{ total }}
+                                            đ</span>
+                                    </p>
+                                    <button class="btn-check-out">Thanh Toán Ngay</button>
+                                    <button class="btn-return  mt-2">Tiếp Tục Mua Hàng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+</div>
